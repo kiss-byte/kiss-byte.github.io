@@ -15,7 +15,7 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 
 > 搜索公众号：** 果粉码农 ** 或扫描二维码关注
 
-![QR Code](./wechat_qr_code.JPG)
+![QR Code](./wechat_qr_code.JPG =256x)
 
 ---
 
@@ -38,7 +38,7 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 
 **下载 | Download**
 
-[![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/app/idYOUR_APP_ID)
+[![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/app/id6767488033)
 
 ---
 
@@ -57,5 +57,5 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 
 **下载 | Download**
 
-[![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/app/idYOUR_APP_ID)
+[![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/app/id6760801833)
 
