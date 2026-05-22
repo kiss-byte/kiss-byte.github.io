@@ -15,8 +15,8 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 
 > 搜索公众号：** 果粉码农 ** 或扫描二维码关注
 
-![QR Code](./wechat_qr_code.JPG =256x)
 <img src="./wechat_qr_code.JPG" width="256"/>
+
 ---
 
 ## My Apps
