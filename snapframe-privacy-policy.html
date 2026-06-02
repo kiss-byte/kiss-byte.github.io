@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>快拍（SnapFrame）隐私政策</title>
+  <style>
+    :root {
+      --bg:        #0d0d0f;
+      --surface:   #1a1a1f;
+      --border:    #2a2a32;
+      --accent:    #FFD60A;
+      --text:      #e8e8ec;
+      --text-sub:  #8e8e9a;
+      --text-muted:#5a5a68;
+      --green:     #30d158;
+      --red:       #ff453a;
+      --blue:      #0a84ff;
+      --radius:    12px;
+      --font:      -apple-system, "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── 顶部 hero ── */
+    .hero {
+      background: linear-gradient(160deg, #1b2a4a 0%, #0d0d0f 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 24px 40px;
+      text-align: center;
+    }
+    .hero-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #2F9BEA, #2B53C8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(43, 83, 200, 0.4);
+    }
+    .hero-icon svg { width: 38px; height: 38px; }
+    .hero h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .meta-tag {
+      font-size: 12px;
+      color: var(--text-sub);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+
+    /* ── 核心布局 ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* ── 分节标题 ── */
+    .section {
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: rgba(255, 214, 10, 0.15);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .sub-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin: 24px 0 10px;
+    }
+
+    /* ── 权限卡片 ── */
+    .perm-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .perm-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .perm-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .perm-icon.camera  { background: rgba(10,132,255,0.18); }
+    .perm-icon.photos  { background: rgba(48,209,88,0.18);  }
+    .perm-icon.location{ background: rgba(255,69,58,0.18);  }
+    .perm-title { font-size: 15px; font-weight: 600; }
+    .perm-badge {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .perm-badge.required  { background: rgba(255,69,58,0.15); color: var(--red); }
+    .perm-badge.optional  { background: rgba(48,209,88,0.15); color: var(--green); }
+    .perm-rows { padding: 4px 0; }
+    .perm-row {
+      display: flex;
+      gap: 12px;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 13.5px;
+    }
+    .perm-row:last-child { border-bottom: none; }
+    .perm-label {
+      color: var(--text-sub);
+      width: 72px;
+      flex-shrink: 0;
+      font-size: 12px;
+      padding-top: 1px;
+    }
+    .perm-value { color: var(--text); flex: 1; }
+    .tag-no  { color: var(--red);   font-weight: 600; }
+    .tag-yes { color: var(--green); font-weight: 600; }
+
+    /* ── 普通表格 ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    thead tr { background: rgba(255,255,255,0.04); }
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 11px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* ── 不收集列表 ── */
+    .no-collect-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .no-collect-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+    }
+    .no-collect-item::before {
+      content: "✕";
+      color: var(--red);
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── API 代码块 ── */
+    .api-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 4px 0;
+      margin-bottom: 12px;
+    }
+    .api-item {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 13px;
+    }
+    .api-item:last-child { border-bottom: none; }
+    .api-name {
+      font-family: "SF Mono", "Menlo", monospace;
+      font-size: 11.5px;
+      color: var(--blue);
+      background: rgba(10,132,255,0.1);
+      padding: 2px 6px;
+      border-radius: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .api-desc { color: var(--text-sub); }
+
+    /* ── SDK 列表 ── */
+    .sdk-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sdk-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13.5px;
+    }
+    .sdk-name { font-weight: 600; min-width: 100px; }
+    .sdk-desc { color: var(--text-sub); flex: 1; }
+    .sdk-badge {
+      font-size: 11px;
+      background: rgba(48,209,88,0.12);
+      color: var(--green);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* ── 权利控制列表 ── */
+    .control-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .control-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13.5px;
+    }
+    .control-icon { font-size: 16px; flex-shrink: 0; }
+    .control-label { font-weight: 600; margin-bottom: 3px; }
+    .control-path  { color: var(--text-sub); font-size: 12.5px; }
+
+    /* ── 提示块 ── */
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: rgba(255, 214, 10, 0.06);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: var(--text-sub);
+      margin-top: 12px;
+    }
+    .callout strong { color: var(--accent); }
+
+    /* ── 段落文字 ── */
+    p { color: var(--text-sub); font-size: 14px; margin-bottom: 12px; }
+    p strong { color: var(--text); }
+
+    /* ── 联系区块 ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .contact-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #2F9BEA, #2B53C8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .contact-name  { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .contact-email { color: var(--blue); font-size: 13.5px; }
+    .contact-sub   { color: var(--text-sub); font-size: 12px; margin-top: 4px; }
+
+    /* ── 页脚 ── */
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--text-muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── 响应式 ── */
+    @media (max-width: 540px) {
+      .no-collect-grid { grid-template-columns: 1fr; }
+      .contact-card    { flex-direction: column; }
+      .sdk-item        { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-icon">
+    <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="11" width="28" height="20" rx="4" stroke="white" stroke-width="2"/>
+      <circle cx="19" cy="21" r="5.5" stroke="white" stroke-width="2"/>
+      <rect x="14" y="7" width="10" height="5" rx="2" fill="white" opacity="0.6"/>
+    </svg>
+  </div>
+  <h1>快拍 <span>·</span> SnapFrame</h1>
+  <h1 style="font-size:18px;font-weight:500;color:var(--text-sub);margin-top:4px;">隐私政策</h1>
+  <div class="meta">
+    <span class="meta-tag">版本 1.0</span>
+    <span class="meta-tag">生效日期：2026 年 6 月</span>
+    <span class="meta-tag">iOS 18.6+ · 仅 iPhone</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 一、概述 -->
+  <div class="section">
+    <div class="section-title"><span class="num">一</span>概述</div>
+    <p>
+      快拍（英文名 SnapFrame，以下简称「本应用」）是一款帮助用户改善拍照构图的相机辅助工具。
+      本应用采用<strong>纯端侧架构</strong>，所有图像分析均在您的 iPhone 本地完成，
+      <strong>不向任何服务器发送任何数据</strong>，<strong>不收集任何个人信息用于商业目的</strong>。
+    </p>
+    <p>请您在使用本应用前仔细阅读本隐私政策。</p>
+  </div>
+
+  <!-- 二、权限 -->
+  <div class="section">
+    <div class="section-title"><span class="num">二</span>我们收集和使用的数据</div>
+
+    <!-- 相机 -->
+    <div class="perm-card">
+      <div class="perm-header">
+        <div class="perm-icon camera">📷</div>
+        <div class="perm-title">相机权限</div>
+        <span class="perm-badge required">必须</span>
+      </div>
+      <div class="perm-rows">
+        <div class="perm-row"><span class="perm-label">收集内容</span><span class="perm-value">实时相机取景帧（CVPixelBuffer）</span></div>
+        <div class="perm-row"><span class="perm-label">使用目的</span><span class="perm-value">在设备本地运行 Apple Vision 框架分析构图，包括人脸检测、人体姿态识别、显著性分析、地平线检测、轮廓与矩形识别</span></div>
+        <div class="perm-row"><span class="perm-label">是否上传</span><span class="perm-value"><span class="tag-no">否</span> — 所有帧数据仅在内存中处理，分析结束后立即释放，不存储、不上传、不共享</span></div>
+        <div class="perm-row"><span class="perm-label">是否必须</span><span class="perm-value"><span class="tag-yes">是</span> — 相机权限是本应用的核心功能，拒绝后应用无法正常使用</span></div>
+      </div>
+    </div>
+
+    <!-- 照片库 -->
+    <div class="perm-card">
+      <div class="perm-header">
+        <div class="perm-icon photos">🖼️</div>
+        <div class="perm-title">照片库权限</div>
+        <span class="perm-badge optional">可选</span>
+      </div>
+      <div class="perm-rows">
+        <div class="perm-row"><span class="perm-label">收集内容</span><span class="perm-value">仅在用户主动点击快门后，将拍摄的照片写入相册</span></div>
+        <div class="perm-row"><span class="perm-label">使用目的</span><span class="perm-value">保存用户拍摄的照片到系统相册</span></div>
+        <div class="perm-row"><span class="perm-label">权限范围</span><span class="perm-value">「仅添加」（Add Only），本应用<strong>无法读取</strong>您相册中已有的任何照片</span></div>
+        <div class="perm-row"><span class="perm-label">是否上传</span><span class="perm-value"><span class="tag-no">否</span></span></div>
+        <div class="perm-row"><span class="perm-label">是否必须</span><span class="perm-value"><span class="tag-no">否</span> — 拒绝后可正常预览和分析构图，但无法保存照片</span></div>
+      </div>
+    </div>
+
+    <!-- 位置 -->
+    <div class="perm-card">
+      <div class="perm-header">
+        <div class="perm-icon location">📍</div>
+        <div class="perm-title">位置权限</div>
+        <span class="perm-badge optional">可选</span>
+      </div>
+      <div class="perm-rows">
+        <div class="perm-row"><span class="perm-label">收集内容</span><span class="perm-value">当前位置（精度约 100 米）</span></div>
+        <div class="perm-row"><span class="perm-label">使用目的</span><span class="perm-value">用户在设置中开启「保存位置信息」后，将地理位置写入照片 EXIF 元数据</span></div>
+        <div class="perm-row"><span class="perm-label">是否上传</span><span class="perm-value"><span class="tag-no">否</span> — 位置数据仅嵌入照片文件，不发送至任何服务器</span></div>
+        <div class="perm-row"><span class="perm-label">是否必须</span><span class="perm-value"><span class="tag-no">否</span> — 默认关闭，可在「设置 → 保存位置信息」中自行控制</span></div>
+        <div class="perm-row"><span class="perm-label">使用频率</span><span class="perm-value">仅在开启功能且用户拍照时短暂获取一次，不在后台持续追踪</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三、不收集 -->
+  <div class="section">
+    <div class="section-title"><span class="num">三</span>我们不收集的数据</div>
+    <p>以下数据本应用<strong>明确不收集、不使用、不共享</strong>：</p>
+    <div class="no-collect-grid">
+      <div class="no-collect-item">姓名、账号、联系方式等身份信息</div>
+      <div class="no-collect-item">健康数据、生物特征（Face ID / Touch ID）</div>
+      <div class="no-collect-item">通讯录、日历、提醒事项</div>
+      <div class="no-collect-item">设备广告标识符（IDFA）</div>
+      <div class="no-collect-item">浏览历史、搜索记录</div>
+      <div class="no-collect-item">崩溃日志或使用统计（无第三方 Analytics SDK）</div>
+      <div class="no-collect-item">相机视频 / 音频录制数据</div>
+    </div>
+  </div>
+
+  <!-- 四、数据处理 -->
+  <div class="section">
+    <div class="section-title"><span class="num">四</span>数据处理方式</div>
+
+    <div class="sub-title">端侧处理 · 零网络请求</div>
+    <p>本应用在运行期间<strong>不发起任何网络请求</strong>。所有构图分析由 Apple Vision 框架在设备本地执行：</p>
+    <div class="api-list">
+      <div class="api-item"><span class="api-name">VNGenerateAttentionBasedSaliencyImageRequest</span><span class="api-desc">主体显著性分析</span></div>
+      <div class="api-item"><span class="api-name">VNDetectFaceRectanglesRequest</span><span class="api-desc">人脸位置检测</span></div>
+      <div class="api-item"><span class="api-name">VNDetectHumanBodyPoseRequest</span><span class="api-desc">人体姿态检测</span></div>
+      <div class="api-item"><span class="api-name">VNDetectHorizonRequest</span><span class="api-desc">地平线倾斜检测</span></div>
+      <div class="api-item"><span class="api-name">VNDetectContoursRequest / VNDetectRectanglesRequest</span><span class="api-desc">引导线与对称检测</span></div>
+    </div>
+    <p>上述分析结果（构图评分、辅助线类型、方向提示）仅用于实时显示，<strong>不持久化存储</strong>。</p>
+
+    <div class="sub-title">第三方 SDK</div>
+    <p>本应用不集成任何第三方数据收集、广告或分析 SDK。工程依赖仅包含：</p>
+    <div class="sdk-list">
+      <div class="sdk-item"><span class="sdk-name">SnapKit</span><span class="sdk-desc">纯 UI 自动布局库，不涉及数据收集</span><span class="sdk-badge">无数据收集</span></div>
+      <div class="sdk-item"><span class="sdk-name">ProgressHUD</span><span class="sdk-desc">纯 UI 反馈提示库，不涉及数据收集</span><span class="sdk-badge">无数据收集</span></div>
+      <div class="sdk-item"><span class="sdk-name">Kingfisher</span><span class="sdk-desc">本地图片加载库（构图指南图片），不涉及数据收集</span><span class="sdk-badge">无数据收集</span></div>
+    </div>
+  </div>
+
+  <!-- 五、存储 -->
+  <div class="section">
+    <div class="section-title"><span class="num">五</span>数据存储与保留</div>
+    <table>
+      <thead>
+        <tr>
+          <th>数据类型</th>
+          <th>存储位置</th>
+          <th>保留时长</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>应用设置（构图模式、覆盖层透明度等）</td>
+          <td>设备本地 UserDefaults</td>
+          <td>随应用卸载删除</td>
+        </tr>
+        <tr>
+          <td>拍摄的照片</td>
+          <td>用户系统相册</td>
+          <td>由用户自行管理</td>
+        </tr>
+        <tr>
+          <td>相机帧数据</td>
+          <td>仅驻留内存，不落盘</td>
+          <td>分析完成后立即释放</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>本应用<strong>不在设备外部存储任何用户数据</strong>。</p>
+  </div>
+
+  <!-- 六、儿童 -->
+  <div class="section">
+    <div class="section-title"><span class="num">六</span>儿童隐私</div>
+    <p>本应用不专门面向 13 岁以下儿童，也不有意收集儿童的个人信息。</p>
+  </div>
+
+  <!-- 七、权利 -->
+  <div class="section">
+    <div class="section-title"><span class="num">七</span>您的权利与控制</div>
+    <div class="control-list">
+      <div class="control-item">
+        <div class="control-icon">📷</div>
+        <div>
+          <div class="control-label">撤销相机权限</div>
+          <div class="control-path">iOS 设置 → 隐私与安全性 → 相机 → 快拍（关闭）</div>
+        </div>
+      </div>
+      <div class="control-item">
+        <div class="control-icon">🖼️</div>
+        <div>
+          <div class="control-label">撤销照片库权限</div>
+          <div class="control-path">iOS 设置 → 隐私与安全性 → 照片 → 快拍（关闭）</div>
+        </div>
+      </div>
+      <div class="control-item">
+        <div class="control-icon">📍</div>
+        <div>
+          <div class="control-label">撤销位置权限</div>
+          <div class="control-path">iOS 设置 → 隐私与安全性 → 定位服务 → 快拍（关闭）</div>
+        </div>
+      </div>
+      <div class="control-item">
+        <div class="control-icon">🔘</div>
+        <div>
+          <div class="control-label">关闭位置写入</div>
+          <div class="control-path">应用内 设置 → 保存位置信息（开关）</div>
+        </div>
+      </div>
+      <div class="control-item">
+        <div class="control-icon">🗑️</div>
+        <div>
+          <div class="control-label">删除所有数据</div>
+          <div class="control-path">卸载应用即可完全清除本地设置数据</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 八、营养标签 -->
+  <div class="section">
+    <div class="section-title"><span class="num">八</span>App Store 数据标签（隐私营养标签）</div>
+    <p>按照 Apple App Store 要求的隐私数据披露：</p>
+    <table>
+      <thead>
+        <tr>
+          <th>数据类型</th>
+          <th>是否收集</th>
+          <th>用途</th>
+          <th>关联到您</th>
+          <th>用于追踪</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>照片或视频</td>
+          <td><span class="tag-yes">是（相机实时帧）</span></td>
+          <td>应用功能</td>
+          <td><span class="tag-no">否</span></td>
+          <td><span class="tag-no">否</span></td>
+        </tr>
+        <tr>
+          <td>精确位置</td>
+          <td><span class="tag-no">否</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>粗略位置</td>
+          <td><span class="tag-yes">是（可选）</span></td>
+          <td>应用功能</td>
+          <td><span class="tag-no">否</span></td>
+          <td><span class="tag-no">否</span></td>
+        </tr>
+        <tr>
+          <td>用户标识符</td>
+          <td><span class="tag-no">否</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>使用数据</td>
+          <td><span class="tag-no">否</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>诊断数据</td>
+          <td><span class="tag-no">否</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      本应用在 App Store Connect 隐私问卷中应申报：<strong>数据不用于追踪您</strong>，属于「按隐私保护实践收集的数据」类别。
+    </div>
+  </div>
+
+  <!-- 九、政策变更 -->
+  <div class="section">
+    <div class="section-title"><span class="num">九</span>政策变更</div>
+    <p>如本隐私政策发生重大变更，我们将通过应用内通知或 App Store 版本说明告知用户，并更新文档顶部的「生效日期」。继续使用本应用即视为您接受更新后的政策。</p>
+  </div>
+
+  <!-- 十、联系 -->
+  <div class="section">
+    <div class="section-title"><span class="num">十</span>联系我们</div>
+    <div class="contact-card">
+      <div class="contact-avatar">👤</div>
+      <div>
+        <div class="contact-name">快拍（SnapFrame）开发者</div>
+        <div class="contact-email">yibo3513@gmail.com</div>
+        <div class="contact-sub">个人开发者 · 如有隐私相关问题，请发送邮件，我们将在 3 个工作日内回复。</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  本隐私政策依据 Apple App Store 审核指南（Guideline 5.1 Privacy）及中国《个人信息保护法》相关要求编写。<br/>
+  © 2026 快拍 · SnapFrame · 保留所有权利
+</footer>
+
+</body>
+</html>
