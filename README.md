@@ -21,6 +21,26 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 
 ## My Apps
 
+### 快拍能手 | Shot Master
+
+> 实时构图分析，端侧 AI，拍出好看照片
+> Real-time composition guide powered by on-device AI.
+
+**核心亮点**
+
+- **实时构图建议** — 基于 Apple Vision 框架分析每一帧，给出三分法、引导线、对称等构图提示，即时反馈
+- **智能场景识别** — 自动检测人脸、主体显著区域与地平线倾斜，针对人像、风景、静物分别给出最优构图方向
+- **评分实时显示** — 取景框右上角金色进度环实时展示构图评分（1.0–5.0），一眼看出当前画面质量
+- **方向引导箭头** — 主体偏离构图最优位置时，自动给出上下左右方向提示，移动相机即可对齐
+- **完全离线处理** — 所有分析均在设备本地完成，照片不上传，隐私零风险
+- **6 种构图法则内置详解** — 三分法、中央构图、引导线、对称、框架构图、极简主义，图文并茂，边学边拍
+
+**下载 | Download**
+
+[![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/app/id6773542560)
+
+| --- |
+
 ### SnapID智能证件照 | ID Photo Maker
 
 > AI 智能抠图，离线安全，一秒出片
