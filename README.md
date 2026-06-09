@@ -37,6 +37,8 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 
 **下载 | Download**
 
+<img src="./id6773542560.png" width="256"/>
+
 [![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/app/id6773542560)
 
 ---
@@ -58,6 +60,8 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 
 **下载 | Download**
 
+<img src="./id6767488033.png" width="256"/>
+
 [![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/app/id6767488033)
 
 ---
@@ -76,6 +80,8 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 - **极简交互** — 没有多余功能，没有广告弹窗，回归工具本质
 
 **下载 | Download**
+
+<img src="./id6760801833.png" width="256"/>
 
 [![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/app/id6760801833)
 
