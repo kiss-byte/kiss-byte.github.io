@@ -21,7 +21,7 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 
 ## My Apps
 
-### 快拍能手 | Shot Master
+### 快拍能手 | Snap Frame
 
 > 实时构图分析，端侧 AI，拍出好看照片
 > Real-time composition guide powered by on-device AI.
@@ -39,7 +39,7 @@ Building iOS & HarmonyOS apps that make everyday tools smarter with AI.
 
 [![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/app/id6773542560)
 
-| --- |
+---
 
 ### SnapID智能证件照 | ID Photo Maker
 
